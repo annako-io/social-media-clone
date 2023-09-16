@@ -43,15 +43,14 @@
           <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-
         <div class="carousel-indicators" style="position:static">
             <% post.images.each_with_index do |img, i| %>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i %>" class="bg-dark <%= i==0 ? 'active' : '' %>" <%= i==0 ? 'aria-current="true"' : '' %> aria-label="Slide <%= i+1 %>"></button>
             <% end %> 
           </div>
         </div>
-
-      <p class="card-text"><%= post.caption %></p>
+        <p class="card-text"><span class="fw-bold"><%= post.user.username %></span> <%= post.caption %></p>
+        <small class="text-muted"><%= time_ago_in_words(post.created_at) %></small>
     </div>
     <div class="card-footer">
       Card footer
