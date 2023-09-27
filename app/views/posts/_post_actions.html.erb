@@ -3,6 +3,9 @@
     <%= button_to toggle_like_path(post_id: post.id), method: :post, style: "border:none; background:none", id: "post#{post.id}actions-likeBtn" do %>
       <i class="<%= post.likes.find_by(user: current_user) ? "fa-solid color-red" : "fa-regular" %> fa-heart fa-xl"></i>
     <% end %>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#post<%= post.id %>_commentsModal" style="text-decoration:none">
+      <i class="fa-regular fa-comment fa-xl fa-flip-horizontal text-dark"></i>
+    </a>
   </div>
 
   <!-- Button trigger modal -->
@@ -15,7 +18,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Post Likes</h1>
+          <h1 class="modal-title fs-5" id="likesModalLabel">Post Likes</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
