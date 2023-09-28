@@ -5,9 +5,9 @@
       <div class="d-flex justify-content-between">
         <div>
           <% if post.user.profile_pic.attached? %>
-            <%= image_tag post.user.profile_pic, class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+            <%= image_tag post.user.profile_pic, class: "img-thumbnail rounded-circle", style: "width: 2rem; height: 2rem" %>
           <% else %>
-            <%= image_tag "user-pp.png", class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+            <%= image_tag "user-pp.png", class: "img-thumbnail rounded-circle", style: "width: 2rem; height: 2rem" %>
           <% end %>
           <span class="fw-bold mx-2"><%= post.user.username %></span>
         </div>
