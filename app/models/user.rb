@@ -10,4 +10,19 @@ class User < ApplicationRecord
   has_many :likes
 
   has_many :comments
+
+  # previous listed as :waiting_received_requests
+  has_many :follow_requests, -> {where(accepted: false)}, class_name: "Follow", foreign_key: "followed_id"
+  # "followers"
+  has_many :accepted_received_requests, -> {where(accepted: true)}, class_name: "Follow", foreign_key: "followed_id"
+  # "following"
+  has_many :accepted_sent_requests, -> {where(accepted: true)}, class_name: "Follow", foreign_key: "follower_id"
+
+
+  # has_many :received_requests, class_name: "Follow", foreign_key: "followed_id"
+  # has_many :sent_requests, class_name: "Follow", foreign_key: "follower_id"
+  # has_many :waiting_sent_requests, -> {where(accepted: false)}, class_name: "Follow", foreign_key: "follower_id"
+
+  has_many :followers, through: :accepted_received_requests, source: :follower
+  has_many :following, through: :accepted_sent_requests, source: :followed
 end
