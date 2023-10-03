@@ -25,7 +25,7 @@ class FollowsController < ApplicationController
 
   def decline_follow
     @follow_req.destroy
-    redirect_back(fallback_location:: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
